@@ -1,21 +1,21 @@
 {
-  "name": "angular-todo-example",
+  "name": "AngularJSLocalStorageJsonExample",
   "version": "1.0.0",
-  "description": "Simple Angular Project based on AngularTodoMVC to demonstrate the usage of the framework",
+  "description": "Simple Angular Project with local storage",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/briangoncalves/AngularTodoExample.git"
+    "url": "git+https://github.com/briangoncalves/AngularJSLocalStorageJsonExample.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/briangoncalves/AngularTodoExample/issues"
+    "url": "https://github.com/briangoncalves/AngularJSLocalStorageJsonExample/issues"
   },
-  "homepage": "https://github.com/briangoncalves/AngularTodoExample#readme",
+  "homepage": "https://github.com/briangoncalves/AngularJSLocalStorageJsonExample#readme",
   "devDependencies": {
     "bower": "^1.7.9",
     "connect": "^3.5.0",
