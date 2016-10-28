@@ -1,0 +1,63 @@
+<section id="registerProject">
+	<header id="header">
+		<form id="projectForm">
+			<div class="form-group">
+				<label for="projectName">Project Name (use same name for edit):</label>
+				<input class="form-control" id="projectName" placeholder="Project Name:" ng-model="project.name">
+			</div>
+			<div class="form-group">
+				<label for="projectDescription">Project Description:</label>
+				<input class="form-control" id="projectDescription" placeholder="Project Description:" ng-model="project.description">
+			</div>
+			<div class="form-group">
+				<label for="positionName">Position Name (use same name for edit):</label>
+				<input class="form-control" id="positionName" placeholder="Position Name:" ng-model="position.name">
+			</div>
+			<div class="form-group">
+				<label for="positionDescription">Position Description:</label>
+				<input class="form-control" id="positionDescription" placeholder="Position Description:" ng-model="position.description">
+			</div>
+			<div class="form-group">
+				<label for="positionTechnologies">Position Technologies:</label>
+				<input class="form-control" id="positionTechnologies" placeholder="Prosition Technologies:" ng-model="position.technologies">
+			</div>
+		</form>
+		<button ng-click="insertProject(project, position)" class="btn btn-default">Insert new project</button>
+	</header>
+	<br/><br/>
+	<section id="noData" ng-show="!projects.length" ng-cloak>
+		<div>No projects found</div>
+	</section>
+	<section id="main" ng-show="projects.length" ng-cloak>        
+		<ul id="projectList">
+			<li ng-repeat="project in projects | filter:{ description: filterProject } track by $index">
+				<div class="jumbotron">
+					<label>Project: {{project.name}}</label><br/>
+					<label>Description: {{project.description}}</label><br/>
+					Positions:
+					<ul>
+						<li ng-repeat="position in project.positions track by $index">
+							<label>Position: {{position.name}}</label><br/>
+							<label>Description: {{position.description}}</label><br/>
+							<label>Technologies: {{position.technologies}}</label><br/>
+							Applications:
+							<ul>
+								<li ng-repeat="application in project.applications track by $index">
+									<label>{{application}}</label>
+									<br/>
+								</li>
+							</ul>
+							<hr/>
+						</li>						
+					</ul>					
+					<button ng-click="select(project)" class="btn btn-default">Edit Project</button>
+				</div>                
+			</li>
+		</ul>
+	</section>
+	<footer id="footer" ng-show="projects.length" ng-cloak>
+		<span id="projectCount"><strong>{{numberOfProjects}}</strong>
+			<ng-pluralize count="numberOfProjects" when="{ one: 'project found', other: 'projects found' }"></ng-pluralize>
+		</span>        
+	</footer>
+</section>	

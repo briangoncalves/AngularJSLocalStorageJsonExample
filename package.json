@@ -1,0 +1,53 @@
+{
+  "name": "angular-todo-example",
+  "version": "1.0.0",
+  "description": "Simple Angular Project based on AngularTodoMVC to demonstrate the usage of the framework",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briangoncalves/AngularTodoExample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/briangoncalves/AngularTodoExample/issues"
+  },
+  "homepage": "https://github.com/briangoncalves/AngularTodoExample#readme",
+  "devDependencies": {
+    "bower": "^1.7.9",
+    "connect": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-bower": "0.0.13",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-csslint": "^1.0.0",
+    "gulp-htmllint": "0.0.11",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-jslint": "^1.0.5",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.7.3",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-webdriver": "^2.0.2",
+    "jshint": "^2.9.3",
+    "jslint": "^0.10.3",
+    "mocha": "^3.1.0",
+    "run-sequence": "^1.2.2",
+    "selenium-standalone": "^5.7.2",
+    "serve-static": "^1.11.1",
+    "uglify": "^0.1.5",
+    "wdio-allure-reporter": "^0.1.2",
+    "wdio-concise-reporter": "0.0.2",
+    "wdio-dot-reporter": "0.0.6",
+    "wdio-mocha-framework": "^0.4.3",
+    "wdio-selenium-standalone-service": "0.0.7",
+    "wdio-spec-reporter": "0.0.3",
+    "webdriverio": "^4.2.16"
+  }
+}

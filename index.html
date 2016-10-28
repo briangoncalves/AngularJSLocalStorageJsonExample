@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" data-framework="angularjs">
+	<head>
+		<meta charset="utf-8">
+		<title>GFT Project Annoucement and Application</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.css">
+		<style>
+			#content{ margin-top: 60px; }
+			ul{list-style: none; margin-left:0px;}
+		</style>
+	</head>
+	<body ng-app="projectAnnoucementApp">
+	<div ng-include='"templates/header.html"'></div>
+	<div id='content' ng-view></div>
+	<br/><br/>
+	<div ng-include='"templates/footer.html"'></div>				
+		<script src="js/vendors.js"></script>		
+		<script src="app/app.js"></script>
+		<script src="app/services/projectStorage.js"></script>
+		<script src="app/controllers/projectRegistrationCtrl.js"></script>
+		<script src="app/controllers/projectAnnoucementCtrl.js"></script>
+		<script src="app/services/userService.js"></script>
+		<script src="app/services/authenticationService.js"></script>
+	</body>
+</html>
