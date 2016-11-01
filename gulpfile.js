@@ -96,13 +96,13 @@ function htmllintReporter(filepath, issues) {
         issues.forEach(function (issue) {
             gutil.log(gutil.colors.cyan('[gulp-htmllint] ') + gutil.colors.white(filepath + ' [' + issue.line + ',' + issue.column + ']: ') + gutil.colors.red('(' + issue.code + ') ' + issue.msg));
         });
- 
+
         process.exitCode = 1;
     }
 }
 
 gulp.task('copyIndex', function() {
-   return gulp.src('index.html') 
+   return gulp.src('index.html')
        .pipe(gulp.dest('dist'));
 });
 
@@ -112,12 +112,12 @@ gulp.task('copyAppDev', function() {
 });
 
 gulp.task('copyTemplatesDev', function() {
-   return gulp.src('templates/**/*.*') 
+   return gulp.src('templates/**/*.*')
         .pipe(gulp.dest('dist/templates'))
 });
 
 gulp.task('copyTemplatesProd', function() {
-   return gulp.src('templates/**/*.*') 
+   return gulp.src('templates/**/*.*')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('dist/templates'))
 });
@@ -195,13 +195,39 @@ gulp.task('copyFonts', function() {
 });
 /* End CSS Tasks */
 
+/* Config variables Tasks */
+
+gulp.task('configLocal', ['renameConfigLocal'], function() {
+  return gulp.src('dist/app/config.local.js')
+      .pipe(clean());
+});
+
+gulp.task('configProd', ['renameConfigProd'], function() {
+  return gulp.src('dist/app/config.prod.js')
+      .pipe(clean());
+});
+
+gulp.task('renameConfigLocal', function() {
+    return gulp.src('dist/app/config.local.js')
+    .pipe(rename('config.js'))
+    .pipe(gulp.dest('dist/app'));
+});
+
+gulp.task('renameConfigProd', function() {
+    return gulp.src('dist/app/config.prod.js')
+    .pipe(rename('config.js'))
+    .pipe(gulp.dest('dist/app'));
+});
+
+/* End Config variables Tasks */
+
 /* Runners */
 gulp.task('default', function (cb) {
-    return runSequence('clean', ['jshint', 'htmllint', 'bower'], ['vendors', 'copyIndex', 'copyAppDev', 'copyCssDev', 'copyFonts', 'copyTemplatesDev'], cb);
+    return runSequence('clean', ['jshint', 'htmllint', 'bower'], ['vendors', 'copyIndex', 'copyAppDev', 'copyCssDev', 'copyFonts', 'copyTemplatesDev'], 'configLocal', cb);
 });
 
 gulp.task('prod', function (cb) {
-    return runSequence('clean', ['jshint', 'htmllint', 'bower'], ['vendors', 'uglify', 'htmlmin', 'htmlmin-index', 'copyCssProd', 'minify-css', 'copyFonts', 'copyTemplatesProd'], ['bootstrapThemeCssRenameProd', 'bootstrapCssRenameProd'], 'cleanBootstrapCssProd', cb);
+    return runSequence('clean', ['jshint', 'htmllint', 'bower'], ['vendors', 'uglify', 'htmlmin', 'htmlmin-index', 'copyCssProd', 'minify-css', 'copyFonts', 'copyTemplatesProd'], ['configProd', 'bootstrapThemeCssRenameProd', 'bootstrapCssRenameProd'], 'cleanBootstrapCssProd', cb);
 });
 
 gulp.task('test', function(cb) {

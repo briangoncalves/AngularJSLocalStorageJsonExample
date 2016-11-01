@@ -1,21 +1,28 @@
-angular.module('projectAnnoucementApp').factory('projectStorage', function ($http, $injector) {
+angular.module('projectAnnoucementApp').factory('projectStorage', function ($http, $injector, $q) {
     'use strict';
     // Detect if an API backend is present. If so, return the API module, else
     // hand off the localStorage adapter
-    return $http.get('/api').then(function () {
-        return $injector.get('api');
-    }, function () {
-        return $injector.get('localStorage');
-    });
+    var url = appConfiguration.ProjectApiUrl;
+    if (url){
+      return $http.get('/api').then(function () {
+          return $injector.get('api');
+      }, function () {
+          return $injector.get('localStorage');
+      });
+    } else {
+        var deferred = $q.defer();
+        deferred.resolve($injector.get('localStorage'));
+        return deferred.promise;
+    }
 }).factory('api', function ($resource) {
     'use strict';
     var store = {
         projects: [],
-        api: $resource('/api/projects/:id', null, {
+        api: $resource(url + '/projects/:id', null, {
             update: {
                 method: 'PUT'
             }
-        }),        
+        }),
         delete: function (project) {
             var originalProjects = store.projects.slice(0);
             store.projects.splice(store.projects.indexOf(project), 1);
@@ -56,7 +63,7 @@ angular.module('projectAnnoucementApp').factory('projectStorage', function ($htt
         },
         _saveToLocalStorage: function (projects) {
             localStorage.setItem(STORAGE_ID, JSON.stringify(projects));
-        },        
+        },
         delete: function (project) {
             var deferred = $q.defer();
             store.projects.splice(store.projects.indexOf(project), 1);

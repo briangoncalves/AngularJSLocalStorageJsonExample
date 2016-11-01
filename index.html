@@ -6,13 +6,13 @@
 		<link rel="stylesheet" href="css/bootstrap.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.css">
 		<style>
-			#content { 
-				margin-top: 60px; 
+			#content {
+				margin-top: 60px;
 				margin-left: 20px;
 				margin-right: 20px;
 			}
 			ul {
-				list-style: none; 
+				list-style: none;
 				margin-left:0px;
 			}
 		</style>
@@ -21,8 +21,9 @@
 	<div ng-include='"templates/header.html"'></div>
 	<div id='content' ng-view></div>
 	<br/><br/>
-	<div ng-include='"templates/footer.html"'></div>				
-		<script src="js/vendors.js"></script>		
+	<div ng-include='"templates/footer.html"'></div>
+		<script src="js/vendors.js"></script>
+		<script src="app/config.js"></script>
 		<script src="app/app.js"></script>
 		<script src="app/services/projectStorage.js"></script>
 		<script src="app/controllers/projectRegistrationCtrl.js"></script>
